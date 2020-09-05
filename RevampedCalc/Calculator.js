@@ -57,6 +57,8 @@ document.getElementById("buttonEqual").addEventListener("click", function(){
   Calculate(document.getElementById("input").value);
 });
 
+const REGEX_ELEMENT_IDENTIFIER = /(\d+|\+|-|\*|\/|\(|\))/g;
+
 let operators = {
   "+": {
     presedence : "1",
