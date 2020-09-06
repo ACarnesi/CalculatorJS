@@ -38,7 +38,7 @@ buttonIds.forEach(({ id, getValue }) => {
     }
   })
 });
-const REGEX_ELEMENT_IDENTIFIER = /(\d+|\+|-|\*|\/|\(|\))/g;
+const REGEX_ELEMENT_IDENTIFIER = /(\d*\.\d+|\d+|\+|-|\*|\/|\(|\))/g;
 
 let operators = {
   "+": {
@@ -76,6 +76,7 @@ let operators = {
 let operatorStack = [];
 let outputQueue = [];
 
+//TODO fix the solve equation to push opperands onto a stack until an opperator is pulled, then pop the top two opperators for evaluation Push result.
 function Solve(expression) {
   let inputArray = InputToArray(expression);
   operatorStack = [];
@@ -105,7 +106,7 @@ function InputToArray(input) {
   return inputStr.match(REGEX_ELEMENT_IDENTIFIER);
 }
 
-function ToPostfix(infixExpArray) {
+function ToPostfix(infixExpArray) {  
   let expression = infixExpArray;
   for(let i = 0; i < expression.length; i++) {
     if(IsNumber(expression[i])) {
@@ -135,7 +136,7 @@ function PopToOpeningParentheses() {
 }
 
 function IsNumber(string) {
-  return (string.match(/\d+/));
+  return (string.match(/(\d*\.\d+|\d+)/));
 }
 
 function IsOperator(string) {
