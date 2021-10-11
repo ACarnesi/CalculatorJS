@@ -76,7 +76,6 @@ let operators = {
 let operatorStack = [];
 let outputQueue = [];
 
-//TODO fix the solve equation to push opperands onto a stack until an opperator is pulled, then pop the top two opperators for evaluation Push result.
 function Solve(expression) {
   let inputArray = InputToArray(expression);
   operatorStack = [];
