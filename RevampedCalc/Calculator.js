@@ -80,7 +80,6 @@ function Solve(expression) {
   let inputArray = InputToArray(expression);
   operatorStack = [];
   outputQueue = [];
-  //TODO Might want to validate that there were no invalid symbols before hand that did not get captured
   ToPostfix(inputArray);
   input.value = Calculate(outputQueue);
 }
