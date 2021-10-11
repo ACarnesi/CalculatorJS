@@ -84,21 +84,24 @@ function Solve(expression) {
   //TODO Might want to validate that there were no invalid symbols before hand that did not get captured
   ToPostfix(inputArray);
   input.value = Calculate(outputQueue);
-  console.log(operatorStack);
-  console.log(outputQueue);
 }
 
 function Calculate(postFixQueue) {
-  let a, b, o;
-  while (postFixQueue.length > 1) {
-    a = Number(postFixQueue.shift());
-    b = Number(postFixQueue.shift());
-    o = postFixQueue.shift();
-
-    postFixQueue.unshift(operators[o].operation(a,b));
-    console.log(postFixQueue);
-  }
-  return postFixQueue.shift();
+  let rightOpperand, leftOpperand, opperator;
+  let opperandStack = [];
+  postFixQueue.forEach(element => {
+    if (IsOperator(element)) {
+      opperator = element;
+      rightOpperand = opperandStack.pop();
+      leftOpperand = opperandStack.pop();
+  
+      opperandStack.push(operators[opperator].operation(leftOpperand,rightOpperand));
+    }
+    else if (IsNumber(element)) {
+      opperandStack.push(Number(element));
+    }
+  });
+  return opperandStack.pop();
 }
 
 function InputToArray(input) {
