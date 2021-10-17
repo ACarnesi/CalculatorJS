@@ -5,6 +5,8 @@ This is just a simple calculator that reads an infix expression provided in the 
 
 Currently, it only supports basic opperations of addition, subtraction, multiplication, and division. It should be built in a way to easily extend new opperators if desired. 
 
+Go see the calculator [here.](https://acarnesi.github.io/CalculatorJS/RevampedCalc/Calculator.html)
+
 # TODOs
 - [ ] Add event listeners for keyboard presses
   - The listeners should not function while the input field is in focus
